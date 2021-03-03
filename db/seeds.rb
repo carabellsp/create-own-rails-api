@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+Author.create(name: Faker::TvShows::Friends.character)
+
+User.create(name:Faker::TvShows::BigBangTheory.character)
+
+Post.create(
+  author_id: Author.all.sample.id,
+  title: Faker::TvShows::Friends.quote,
+  content: Faker::Movies::StarWars.quote
+)
+
+Comment.create(
+  user_id: User.all.sample.id,
+  post_id: Post.all.sample.id,
+  content: Faker::TvShows::BigBangTheory.quote
+)
